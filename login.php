@@ -29,10 +29,10 @@
                 <h3 class="text-center">Iniciar Sesión</h3>
             </div>
             <div class="card-body bg-light">
-                <form>
+                <form method="POST" action="">
                     <div class="form-group mt-2">
-                        <label for="usuarioOrCorreo">Usuario</label>
-                        <input type="text" class="form-control" name="usernameOrCorreo" required>
+                        <label for="user_correo">Usuario</label>
+                        <input type="text" class="form-control" name="user_correo" required>
                     </div>
                     <div class="form-group mt-2">
                         <label for="password">Contrase&ntilde;a</label>
