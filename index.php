@@ -29,7 +29,11 @@
                 <h3 class="text-center">Iniciar Sesión</h3>
             </div>
             <div class="card-body bg-light">
+<<<<<<< HEAD:index.php
                 <form method="POST" action="./administrador/back/validacionLogin.php">
+=======
+                <form method="POST" action="">
+>>>>>>> 4458b4c644a1989125d838ce3bd957b12192ff12:login.php
                     <div class="form-group mt-2">
                         <label for="user_correo">Usuario</label>
                         <input type="text" class="form-control" name="user_correo" required>
