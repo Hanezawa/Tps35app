@@ -29,14 +29,14 @@
                 <h3 class="text-center">Iniciar Sesión</h3>
             </div>
             <div class="card-body bg-light">
-                <form>
+                <form method="POST" action="./administrador/back/validacionLogin.php">
                     <div class="form-group mt-2">
-                        <label for="usuarioOrCorreo">Usuario</label>
-                        <input type="text" class="form-control" name="usernameOrCorreo" required>
+                        <label for="user_correo">Usuario</label>
+                        <input type="text" class="form-control" name="user_correo" required>
                     </div>
                     <div class="form-group mt-2">
                         <label for="password">Contrase&ntilde;a</label>
-                        <input type="password" class="form-control" id="password" name="password" required>
+                        <input type="password" class="form-control" name="password" required>
                     </div>
                     <div class="form-group text-center mt-4">
                         <button type="submit" class="btn btn-success btn-block">Iniciar Sesión</button>

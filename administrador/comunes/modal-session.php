@@ -18,8 +18,16 @@
             <div class="modal-body">
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-danger"> Cerrar Sesion </button>
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cerrar</button>
+                <form method="post">
+                <button  type="submit" class=" btn btn-danger" name="session_out"> Cerrar Sesion </a>
+                </form>
+                <?php
+                    if(isset($_POST['session_out'])){
+                        session_destroy();
+                        header('location: ../index.php');
+                    }
+                ?>
             </div>
         </div>
     </div>

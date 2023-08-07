@@ -1,5 +1,12 @@
 <?php
+session_start();
+if (!isset($_SESSION['usuario'])){
+    header('location:../index.php');
+    exit;
+}
+
 include('modal-session.php');
+
 ?>
 
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">

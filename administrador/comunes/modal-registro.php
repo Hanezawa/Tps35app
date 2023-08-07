@@ -1,3 +1,4 @@
+
 <script>
     const myModal = document.getElementById('myModal')
     const myInput = document.getElementById('myInput')
@@ -8,7 +9,7 @@
 </script>
 <!-- Modal -->
 <?php
-include('./administrador/back/datosRegistro.php');
+include('../back/datosRegistro.php');
 ?>
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -18,7 +19,7 @@ include('./administrador/back/datosRegistro.php');
             </div>
             <div class="modal-body">
                 <?php
-                if(){
+                if($register_success){
                     echo" <h3> Se han registrado los datos con exito </h3>";
                 } else{
                     echo" <h3> Error al registrar los datos</h3>";
@@ -27,7 +28,7 @@ include('./administrador/back/datosRegistro.php');
             </div>
             <div class="modal-footer bg-light justify-content-center">
                 <?php
-                if () {
+                if ($register_success) {
                     echo "<a href='login.php'><button type='button' class='btn btn-success' data-bs-dismiss='modal' aria-label='Close'>Finalizar Registro</button></a>";
                 } else {
                     echo "<a href='register.php'><button type='button' class='btn btn-success' data-bs-dismiss='modal' aria-label='Close'>Finalizar Registro</button></a>";
