@@ -15,7 +15,7 @@
 <body class="sb-nav-fixed">
     <?php
     include('comunes/navbar.php');
-    include('../back/conexion.php');
+    include('./back/connection.php');
     ?>
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
@@ -31,7 +31,7 @@
                     <div class="card">
                         <h5 class="card-header bg-black text-white">Agregar Usuarios</h5>
                         <div class="card-body">
-                            <form action="../back/registrar_usuarios.php" method="POST">
+                            <form action="./back/register_users.php" method="POST">
                                 <div class="row">
                                     <div class="col-lg-3">
                                         <div class="form-group">
@@ -40,7 +40,7 @@
                                                 <option value="" hidden>Seleccione</option>
                                                 <?php
 
-                                                $td_documento = "SELECT * FROM `sub_items` WHERE item_id = 2 ORDER BY descripcion ASC;";
+                                                $td_documento = "SELECT * FROM sub_items WHERE id_items = 1 ORDER BY descripcion ASC;";
                                                 $query_documento = mysqli_query($conn, $td_documento);
                                                 while ($row = mysqli_fetch_array($query_documento)) {
                                                     echo "<option value=" . $row['id'] . ">" . $row['descripcion'] . "</option>";
@@ -88,7 +88,7 @@
                                             <select class="form-control" name="rol">
                                                 <option value="" hidden>Seleccione</option>
                                                 <?php
-                                                $td_documento = "SELECT * FROM `sub_items` WHERE item_id = 1 ORDER BY descripcion ASC;";
+                                                $td_documento = "SELECT * FROM `sub_items` WHERE id_items = 2 ORDER BY descripcion ASC;";
                                                 $query_documento = mysqli_query($conn, $td_documento);
                                                 while ($row = mysqli_fetch_array($query_documento)) {
                                                     echo "<option value=" . $row['id'] . ">" . $row['descripcion'] . "</option>";
@@ -98,15 +98,7 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-3">
-                                        <div class="form-group">
-                                            <br>
-                                            <label for="">Contraseña:</label>
-                                            <input type="password" class="form-control" name="pass" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <div class="form-group">
-                                            <br><br>
+                                        <div class="form-group ms-auto"><br><br>
                                             <input type="submit" class="btn btn-warning form-control" value="Registrar"
                                                 name="registrarse">
                                         </div>
@@ -149,18 +141,18 @@
                                 </tfoot>
                                 <tbody>
                                     <?php
-                                    $datos = "SELECT * FROM personas
+                                    $searchUsers = "SELECT * FROM personas
                                     INNER JOIN sub_items AS documentos ON personas.tipo_documento = documentos.id
-                                    INNER JOIN sub_items AS roles ON personas.rol = roles.id;;";
-                                    $query_registro = mysqli_query($conn, $datos);
+                                    INNER JOIN sub_items AS roles ON personas.rol = roles.id;";
+                                    $queryRegister = mysqli_query($conn, $searchUsers);
 
-                                    $count = 0; while($row = mysqli_fetch_array($query_registro)){$count++; ?>
+                                    $count = 0; while($row = mysqli_fetch_array($queryRegister)){$count++; ?>
                                     <tr>
                                         <td><?php echo $count;?></td>
                                         <td><?php echo $row['tipo_documento'] ?></td>
                                         <td><?php echo $row['documento'] ?></td>
-                                        <td><?php echo $row['nombres'] ?></td>
-                                        <td><?php echo $row['apellidos'] ?></td>
+                                        <td><?php echo $row['nombre'] ?></td>
+                                        <td><?php echo $row['apellido'] ?></td>
                                         <td><?php echo $row['correo'] ?></td>
                                         <td><?php echo $row['telefono'] ?></td>
                                         <td><?php echo $row['rol'] ?></td>

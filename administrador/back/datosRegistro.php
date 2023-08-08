@@ -11,7 +11,7 @@ $passConfirm = $_POST['passConfirm'];
 $passEncrypted = password_hash($pass,PASSWORD_DEFAULT);
     if($pass === $passConfirm){
         $consultRegister = "INSERT INTO usuarios (usuario, email, password) VALUES ('$user','$mail', '$passEncrypted')";
-
+        $queryRegister = mysqli_query($conn, $consultRegister);
         if($queryRegister){
             $register_success = true;
             header('location: ../../index.php');
@@ -25,4 +25,3 @@ $passEncrypted = password_hash($pass,PASSWORD_DEFAULT);
 
 
 mysqli_close($conn);
-?>

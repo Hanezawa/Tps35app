@@ -18,14 +18,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if (password_verify($password, $checkPassword)) {
             $_SESSION['usuario'] = $user;
-            header('location: ../index_1.php');
-            
+            header('location: ../../index_1.php');
             exit;
         } else {
             $error = "Nombre de usuario o Contraseña invalido";
             echo $error;
             exit;
         }
+    }else{
+        $error = "Nombre de usuario o Contraseña invalido";
+        echo $error;
+        exit;
     }
 }
 
