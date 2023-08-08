@@ -45,9 +45,9 @@
                 <!-- <div class="text-center">
                     <a href="olvidar_contrasena.html">¿Olvidaste tu contraseña?</a>
                 </div> -->
-                <div class="text-center mt-2">
+                <!-- <div class="text-center mt-2">
                     <a href="register.php">Registrarse</a>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

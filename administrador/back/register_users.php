@@ -9,13 +9,15 @@ if (isset($_POST['registrarse'])) {
     $correo = (empty($_POST['correo'])) ? NULL : $_POST['correo'];
     $telefono = (empty($_POST['telefono'])) ? NULL : $_POST['telefono'];
     $rol = (empty($_POST['rol'])) ? NULL : $_POST['rol'];
+    $userPassword = (empty($_POST['userPassword'])) ? NULL : $_POST['userPassword'];
+    $userPasswordEncrypted = password_hash($userPassword, PASSWORD_DEFAULT);
 
     if (
         $tipoDocumento && $documento && $nombre && $apellido
-        && $correo && $telefono && $rol
+        && $correo && $telefono && $rol && $userPassword
     ) {
 
-        $ingresarDatos = "INSERT INTO personas VALUES ('',$tipoDocumento,$documento,'$nombre','$apellido','$correo',$telefono, $rol)";
+        $ingresarDatos = "INSERT INTO personas VALUES ('',$tipoDocumento,$documento,'$nombre','$apellido','$correo',$telefono, $rol, '$userPasswordEncrypted')";
 
         $registrarDatos = mysqli_query($conn, $ingresarDatos);
 

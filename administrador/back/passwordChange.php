@@ -1,25 +1,27 @@
 <?php
-include('conexion.php');
+include('connection.php');
 
-$consultaContraseña = "SELECT * FROM personas";
+if(isset($_POST['actualizar'])){
+   $password =$_POST['password'];
+   $newPassword = $_POST['nuevaPassword'];
+   $verifyPassword = $_POST['verificarNuevaPassword'];
+   $newPassEncrypted = password_hash($newPassword,PASSWORD_DEFAULT);
+   $consultPassword = "SELECT * FROM personas";
 
-$queryConsultaContraseña = mysqli_query($conn, $consultaContraseña);
+   $queryConsultPassword= mysqli_query($conn, $consultPassword);
 
-while ($row = mysqli_fetch_array($queryConsultaContraseña)) {
-   $pass = $row['pass'];
-}
- if(isset($_POST['actualizar'])){
-    $password =$_POST['password'];
-    $newPassword = $_POST['nuevaPassword'];
-    $verifyPassword = $_POST['verificarNuevaPassword'];
-    $passEncriptada = password_hash($newPassword,PASSWORD_DEFAULT);
-
-    if($email == $correo && password_verify($password,$pass && $newPassword == $verifyPassword)){
-        $actualizarContraseña = "UPDATE personas SET pass = $passEncriptada where correo = '$email'";
-        $queryActualizar = mysqli_query($conn, $actualizarContraseña);
+   if (mysqli_num_rows($queryConsultPassword) == 1) {
+   $row = mysqli_fetch_assoc($queryConsultPassword);
+   $pass = $row['password'];
+      if(password_verify($password, $pass)){
+        $updatePass = "UPDATE personas SET password= '$newPassEncrypted' where password = '$pass';" ;
+        $queryUpdatePass = mysqli_query($conn, $updatePass);
         echo "Se han registrado los datos correctamente";
-    }
- }else{
-    echo "hubo un error al actualizar los datos";
- }
+        header('location: ../cambiar_contraseña.php');
+        exit;
+      }
+   }else{
+   echo "hubo un error al actualizar los datos";
+   }
+}
 ?>

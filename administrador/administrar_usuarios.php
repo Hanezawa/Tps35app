@@ -98,6 +98,13 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-3">
+                                        <div class="form-group">
+                                            <br>
+                                            <label for="">Contraseña:</label>
+                                            <input type="password" class="form-control" name="userPassword">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
                                         <div class="form-group ms-auto"><br><br>
                                             <input type="submit" class="btn btn-warning form-control" value="Registrar"
                                                 name="registrarse">
