@@ -3,11 +3,16 @@
     <div class="sb-sidenav-menu">
         <div class="nav">
             <div class="sb-sidenav-menu-heading">Core</div>
+<<<<<<< HEAD
             <a class="nav-link" href="index_1.php">
+=======
+            <a class="nav-link" href="index.php">
+>>>>>>> 7889f3fbf61a216f226ca9fdd4d5f67b058c3f48
                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                 Dashboard
             </a>
             <a class="nav-link" href="administrar_usuarios.php">
+<<<<<<< HEAD
                 <div class="sb-nav-link-icon"><i class="fa-solid fa-circle-user"></i></div>
                 Administrar Usuarios
             </a>
@@ -15,6 +20,11 @@
                 <div class="sb-nav-link-icon"><i class="fa-solid fa-book"></i></div>
                 Gestionar Cursos
             </a>
+=======
+                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                Administrar Usuarios
+            </a>
+>>>>>>> 7889f3fbf61a216f226ca9fdd4d5f67b058c3f48
             <div class="sb-sidenav-menu-heading">Interface</div>
             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
@@ -70,7 +80,12 @@
         </div>
     </div>
     <div class="sb-sidenav-footer">
+<<<<<<< HEAD
         <div class="small">Ha iniciado Sesi&oacute;n Como:</div>
         <?php echo $_SESSION["usuario"] ?> 
+=======
+        <div class="small">Logged in as:</div>
+        TPS 35
+>>>>>>> 7889f3fbf61a216f226ca9fdd4d5f67b058c3f48
     </div>
 </nav>

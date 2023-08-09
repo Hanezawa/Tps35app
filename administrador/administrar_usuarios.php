@@ -40,7 +40,11 @@
                                                 <option value="" hidden>Seleccione</option>
                                                 <?php
 
+<<<<<<< HEAD
                                                 $td_documento = "SELECT * FROM sub_items WHERE id_items = 2 ORDER BY descripcion ASC;";
+=======
+                                                $td_documento = "SELECT * FROM sub_items WHERE id_items = 1 ORDER BY descripcion ASC;";
+>>>>>>> 7889f3fbf61a216f226ca9fdd4d5f67b058c3f48
                                                 $query_documento = mysqli_query($conn, $td_documento);
                                                 while ($row = mysqli_fetch_array($query_documento)) {
                                                     echo "<option value=" . $row['id'] . ">" . $row['descripcion'] . "</option>";
@@ -88,7 +92,11 @@
                                             <select class="form-control" name="rol">
                                                 <option value="" hidden>Seleccione</option>
                                                 <?php
+<<<<<<< HEAD
                                                 $td_documento = "SELECT * FROM `sub_items` WHERE id_items = 1 ORDER BY descripcion ASC;";
+=======
+                                                $td_documento = "SELECT * FROM `sub_items` WHERE id_items = 2 ORDER BY descripcion ASC;";
+>>>>>>> 7889f3fbf61a216f226ca9fdd4d5f67b058c3f48
                                                 $query_documento = mysqli_query($conn, $td_documento);
                                                 while ($row = mysqli_fetch_array($query_documento)) {
                                                     echo "<option value=" . $row['id'] . ">" . $row['descripcion'] . "</option>";
@@ -105,7 +113,11 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-3">
+<<<<<<< HEAD
                                         <div class="form-group ms-auto"><br>
+=======
+                                        <div class="form-group ms-auto"><br><br>
+>>>>>>> 7889f3fbf61a216f226ca9fdd4d5f67b058c3f48
                                             <input type="submit" class="btn btn-warning form-control" value="Registrar"
                                                 name="registrarse">
                                         </div>
