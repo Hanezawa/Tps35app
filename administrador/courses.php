@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Administrar Usuarios</title>
+    <title>Cursos</title>
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
@@ -26,10 +26,12 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4 text-center">Administrar Usuarios</h1>
+                    <h1 class="mt-4 text-center">Administrar Programas
+                        
+                    </h1>
                     <br>
                     <div class="card">
-                        <h5 class="card-header bg-black text-white">Agregar Usuarios</h5>
+                        <h5 class="card-header bg-black text-white">Agregar Cursos</h5>
                         <div class="card-body">
                             <form action="./back/register_users.php" method="POST">
                                 <div class="row">

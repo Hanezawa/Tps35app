@@ -23,16 +23,13 @@
 </head>
 
 <body>
-    <?php
-    include('administrador/comunes/modal-login.php');
-    ?>
     <div class="container">
         <div class="card">
             <div class="card-header bg-success text-white">
                 <h3 class="text-center">Registro</h3>
             </div>
             <div class="card-body bg-light">
-                <form action="" method="post">
+                <form action="./administrador/back/datosRegistro.php" method="post">
                     <div class="form-group mt-2">
                         <label for="user">Usuario</label>
                         <input type="text" class="form-control" name="user">
@@ -50,7 +47,7 @@
                         <input type="password" class="form-control" name="passConfirm">
                     </div>
                     <div class="form-group mt-4 text-center">
-                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop" name="registrarse">Registrarse</button>
+                        <button type="submit" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop" name="registrarse">Registrarse</button>
                     </div>
                 </form>
             </div>

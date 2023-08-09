@@ -1,3 +1,4 @@
+
 <script>
     const myModal = document.getElementById('myModal')
     const myInput = document.getElementById('myInput')
@@ -8,7 +9,7 @@
 </script>
 <!-- Modal -->
 <?php
-include('./administrador/back/datosRegistro.php');
+include('../back/datosRegistro.php');
 ?>
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">

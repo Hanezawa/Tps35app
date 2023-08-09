@@ -1,22 +1,21 @@
 <?php
 
-include('./administrador/back/connection.php');
+include('./connection.php');
 
 if(isset($_POST['registrarse'])){
 
 $user = $_POST['user'];
 $mail = $_POST['email'];
 $pass = $_POST['pass'];
-$passEncrypted = password_hash($pass,PASSWORD_DEFAULT);
 $passConfirm = $_POST['passConfirm'];
-    if([$pass === $passConfirm]){
-        $consultRegister = "INSERT INTO usuarios (user, email, password) VALUES ('$user','$mail', '$passEncrypted')";
+$passEncrypted = password_hash($pass,PASSWORD_DEFAULT);
+    if($pass === $passConfirm){
+        $consultRegister = "INSERT INTO usuarios (usuario, email, password) VALUES ('$user','$mail', '$passEncrypted')";
         $queryRegister = mysqli_query($conn, $consultRegister);
-
         if($queryRegister){
             $register_success = true;
-            return $register_success;
-        } else{
+            header('location: ../../index.php');
+        }else{
             $register_success = false;
         }
     } else{
@@ -26,4 +25,3 @@ $passConfirm = $_POST['passConfirm'];
 
 
 mysqli_close($conn);
-?>

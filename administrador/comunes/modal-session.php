@@ -16,10 +16,19 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+                <h1>Quiere finalizar la sesi&oacuten?</h1>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-danger"> Cerrar Sesion </button>
+                <form method="post">
+                <button  type="submit" class=" btn btn-danger" name="session_out"> Cerrar Sesion </a>
+                </form>
+                <?php
+                    if(isset($_POST['session_out'])){
+                        session_destroy();
+                        header('location: ../../index.php');
+
+                    }
+                ?>
             </div>
         </div>
     </div>

@@ -1,6 +1,6 @@
 <?php
 
-include('constantes.php');
+require ('constantes.php');
 
 $db_host = host;
 $db_user = usuario;

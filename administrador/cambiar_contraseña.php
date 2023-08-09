@@ -30,14 +30,8 @@
                     <div class="card">
                         <h5 class="card-header bg-black text-white text-center">Cambiar Contraseña</h5>
                         <div class="card-body">
-                            <form action="../back/actualizarContraseña.php" method="POST">
+                            <form action="./back/passwordChange.php" method="POST">
                                 <div class="row">
-                                    <div class="col-lg-3">
-                                        <div class="form-group">
-                                            <label for="">Email:</label>
-                                            <input type="email" class="form-control" name="email" id="">
-                                        </div>
-                                    </div>
                                     <div class="col-lg-3">
                                         <div class="form-group">
                                             <label for="">Contraseña Actual:</label>

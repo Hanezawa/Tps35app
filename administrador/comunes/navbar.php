@@ -1,5 +1,12 @@
 <?php
+session_start();
+if (!isset($_SESSION['usuario'])){
+    header('location:../index.php');
+    exit;
+}
+
 include('modal-session.php');
+
 ?>
 
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -25,9 +32,8 @@ include('modal-session.php');
                 <li>
                     <hr class="dropdown-divider" />
                 </li>
-
-                <li><a class='dropdown-item' href='#!' id='logout' data-bs-toggle="modal" data-bs-target="#staticBackdrop">Cerrar Sesion</a></li>
                 <li><a class='dropdown-item' href='./cambiar_contraseña.php'>Cambiar Contraseña</a></li>
+                <li><a class='dropdown-item' href='#!' id='logout' data-bs-toggle="modal" data-bs-target="#staticBackdrop">Cerrar Sesion</a></li>
 
             </ul>
         </li>

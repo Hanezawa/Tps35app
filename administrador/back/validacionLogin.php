@@ -1,37 +1,33 @@
 <?php
 session_start();
 
-include('./administrador/back/connection.php');
+include('../back/connection.php');
 
-if ($_SERVER['REQUEST METHOD'] == 'POST') {
-
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    
     $user = $_POST['user_correo'];
     $password = $_POST['password'];
 
-    $validarLogin = "SELECT * FROM usuarios WHERE email = '$email' OR user ='$user' AND password = '$password'";
+    $validarLogin = "SELECT * FROM usuarios WHERE (usuario = '$user' OR email ='$user')";
     $queryValidarLogin = mysqli_query($conn, $validarLogin);
 
-    while ($row = mysqli_fetch_array($queryValidarLogin)) {
-        $checkUser = $row['user'];
-        $checkEmail = $row['email'];
-        $checkPassword = $row['password'];
-    }
     if (mysqli_num_rows($queryValidarLogin) == 1) {
-        if ($checkEmail or $checkEmail === $user) {
-            if(password_verify($password,$checkPassword)){
-                $_SESSION['email'] = $user;
-                header('location: ./administrador/index.php');
-                exit;
-            }else{
-                $error = "Nombre de usuario o Contraseña invalido";
 
-                echo $error;
+        $row = mysqli_fetch_assoc($queryValidarLogin);
+        $checkPassword = $row['password'];
 
-                header('location: index.php');
-                exit;
-            }
-
+        if (password_verify($password, $checkPassword)) {
+            $_SESSION['usuario'] = $user;
+            header('location: ../../index_1.php');
+            exit;
+        } else {
+            $error = "Nombre de usuario o Contraseña invalido";
+            echo $error;
+            exit;
         }
+    }else{
+        echo $error;
+        exit;
     }
 }
 
