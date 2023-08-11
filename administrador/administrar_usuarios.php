@@ -29,7 +29,7 @@
                     <h1 class="mt-4 text-center">Administrar Usuarios</h1>
                     <br>
                     <div class="card">
-                        <h5 class="card-header bg-black text-white">Agregar Usuarios</h5>
+                        <h5 class="card-header bg-black text-white"><i class="fa-solid fa-user fa-sm" style="color: #fafafa;"></i>&nbsp;Agregar Usuarios</h5>
                         <div class="card-body">
                             <form action="./back/register_users.php" method="POST">
                                 <div class="row">
@@ -40,11 +40,7 @@
                                                 <option value="" hidden>Seleccione</option>
                                                 <?php
 
-<<<<<<< HEAD
                                                 $td_documento = "SELECT * FROM sub_items WHERE id_items = 2 ORDER BY descripcion ASC;";
-=======
-                                                $td_documento = "SELECT * FROM sub_items WHERE id_items = 1 ORDER BY descripcion ASC;";
->>>>>>> 7889f3fbf61a216f226ca9fdd4d5f67b058c3f48
                                                 $query_documento = mysqli_query($conn, $td_documento);
                                                 while ($row = mysqli_fetch_array($query_documento)) {
                                                     echo "<option value=" . $row['id'] . ">" . $row['descripcion'] . "</option>";
@@ -92,11 +88,7 @@
                                             <select class="form-control" name="rol">
                                                 <option value="" hidden>Seleccione</option>
                                                 <?php
-<<<<<<< HEAD
                                                 $td_documento = "SELECT * FROM `sub_items` WHERE id_items = 1 ORDER BY descripcion ASC;";
-=======
-                                                $td_documento = "SELECT * FROM `sub_items` WHERE id_items = 2 ORDER BY descripcion ASC;";
->>>>>>> 7889f3fbf61a216f226ca9fdd4d5f67b058c3f48
                                                 $query_documento = mysqli_query($conn, $td_documento);
                                                 while ($row = mysqli_fetch_array($query_documento)) {
                                                     echo "<option value=" . $row['id'] . ">" . $row['descripcion'] . "</option>";
@@ -113,11 +105,7 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-3">
-<<<<<<< HEAD
                                         <div class="form-group ms-auto"><br>
-=======
-                                        <div class="form-group ms-auto"><br><br>
->>>>>>> 7889f3fbf61a216f226ca9fdd4d5f67b058c3f48
                                             <input type="submit" class="btn btn-warning form-control" value="Registrar"
                                                 name="registrarse">
                                         </div>
@@ -160,9 +148,10 @@
                                 </tfoot>
                                 <tbody>
                                     <?php
-                                    $searchUsers = "SELECT * FROM personas
-                                    INNER JOIN sub_items AS documentos ON personas.tipo_documento = documentos.id
-                                    INNER JOIN sub_items AS roles ON personas.rol = roles.id;";
+                                    $searchUsers = "SELECT tipo_doc.descripcion AS tipo_documento, documento, nombre, apellido,correo,telefono, rol.descripcion as rol FROM personas
+                                    INNER JOIN sub_items tipo_doc ON personas.tipo_documento = tipo_doc.id 
+                                    INNER JOIN sub_items rol ON personas.rol = rol.id
+                                    WHERE rol.id_items = 1 AND tipo_doc.id_items  = 2;";
                                     $queryRegister = mysqli_query($conn, $searchUsers);
 
                                     $count = 0; while($row = mysqli_fetch_array($queryRegister)){$count++; ?>
