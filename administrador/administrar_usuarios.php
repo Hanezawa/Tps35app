@@ -29,7 +29,7 @@
                     <h1 class="mt-4 text-center">Administrar Usuarios</h1>
                     <br>
                     <div class="card">
-                        <h5 class="card-header bg-black text-white"><i class="fa-solid fa-user fa-sm" style="color: #fafafa;"></i>&nbsp;Agregar Usuarios</h5>
+                        <h5 class="card-header bg-success text-white"><i class="fa-solid fa-user fa-sm" style="color: #fafafa;"></i>&nbsp;Agregar Usuarios</h5>
                         <div class="card-body">
                             <form action="./back/register_users.php" method="POST">
                                 <div class="row">
@@ -104,9 +104,12 @@
                                             <input type="password" class="form-control" name="userPassword">
                                         </div>
                                     </div>
+                                    <div class="col-lg-9">
+
+                                    </div>
                                     <div class="col-lg-3">
                                         <div class="form-group ms-auto"><br>
-                                            <input type="submit" class="btn btn-warning form-control" value="Registrar"
+                                            <input type="submit" class="btn btn-success form-control" value="Registrar"
                                                 name="registrarse">
                                         </div>
                                     </div>
@@ -116,9 +119,9 @@
                     </div>
                     <br>
                     <div class="card mb-4">
-                        <div class="card-header">
+                        <div class="card-header bg-success text-white">
                             <i class="fas fa-table me-1"></i>
-                            DataTable Example
+                            Tabla Usuarios
                         </div>
                         <div class="card-body">
                             <table id="datatablesSimple">

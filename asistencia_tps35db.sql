@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-08-2023 a las 18:54:28
+-- Tiempo de generación: 18-08-2023 a las 18:27:02
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -44,9 +44,17 @@ CREATE TABLE `fichas` (
   `id` int(11) NOT NULL,
   `id_programa` int(11) NOT NULL,
   `ficha` bigint(20) NOT NULL,
-  `alias` int(11) NOT NULL,
+  `alias` varchar(30) NOT NULL,
   `estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `fichas`
+--
+
+INSERT INTO `fichas` (`id`, `id_programa`, `ficha`, `alias`, `estado`) VALUES
+(1, 1, 2672190, 'TPS', 5),
+(2, 2, 567342, 'SYS', 6);
 
 -- --------------------------------------------------------
 
@@ -98,6 +106,13 @@ CREATE TABLE `personas` (
   `pass` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `personas`
+--
+
+INSERT INTO `personas` (`id`, `tipo_documento`, `documento`, `nombre`, `apellido`, `correo`, `telefono`, `rol`, `pass`) VALUES
+(10, 4, 1001854838, 'Eyner', 'Eyner', 'eyner@mail.com', 111111111, 2, '$2y$10$lpvfW8VyyLVXq1iGBGozlOchMXkmBzLi8zj/4VI9N1IBWKmR3k/pO');
+
 -- --------------------------------------------------------
 
 --
@@ -106,9 +121,18 @@ CREATE TABLE `personas` (
 
 CREATE TABLE `programa` (
   `id` int(11) NOT NULL,
-  `nom_programa` varchar(30) NOT NULL,
+  `nom_programa` varchar(50) NOT NULL,
   `estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `programa`
+--
+
+INSERT INTO `programa` (`id`, `nom_programa`, `estado`) VALUES
+(1, 'PROGRAMACION DE SOFTWARE', 5),
+(2, 'SISTEMAS', 5),
+(3, 'INTEGRACION DE CONTENIDOS DIGITALES', 5);
 
 -- --------------------------------------------------------
 
@@ -131,7 +155,8 @@ INSERT INTO `sub_items` (`id`, `id_items`, `descripcion`) VALUES
 (2, 1, 'Instructor'),
 (3, 2, 'T.I'),
 (4, 2, 'C.C'),
-(5, 3, 'ACTIVO\r\n');
+(5, 3, 'ACTIVO\r\n'),
+(6, 3, 'FINALIZADO');
 
 -- --------------------------------------------------------
 
@@ -223,7 +248,7 @@ ALTER TABLE `aprendiz`
 -- AUTO_INCREMENT de la tabla `fichas`
 --
 ALTER TABLE `fichas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `instructor`
@@ -241,19 +266,19 @@ ALTER TABLE `items`
 -- AUTO_INCREMENT de la tabla `personas`
 --
 ALTER TABLE `personas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `programa`
 --
 ALTER TABLE `programa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `sub_items`
 --
 ALTER TABLE `sub_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restricciones para tablas volcadas
