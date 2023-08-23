@@ -26,63 +26,51 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4 text-center">Administrar Fichas
+                    <h1 class="mt-4 text-center">Administrar instructores
                     </h1>
                     <br>
                     <div class="card">
                         <h5 class="card-header bg-success text-white">Agregar Fichas</h5>
                         <div class="card-body">
-                            <form action="./back/registerFicha.php" method="POST">
+                            <form action="./back/registerCourse.php" method="POST">
                                 <div class="row">
-                                    <div class="col-lg-3">
+                                    <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label for="">Curso al que Pertenece:</label>
-                                            <select class="form-control" name="linkFichaCourse">
-                                                <option value="" hidden>Seleccione</option>
-                                                <?php
-                                                $consultPrograms = "SELECT id, nom_programa FROM programa;";
-                                                $queryPrograms = mysqli_query($conn, $consultPrograms);
-                                                while ($row = mysqli_fetch_array($queryPrograms)) {
-                                                    echo "<option value=" . $row['id'] . ">" . $row['nom_programa'] . "</option>";
-                                                }
-                                                ?>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <div class="form-group">
-                                            <label for="">Numero de Ficha:</label>
-                                            <input type="number" class="form-control" name="fichaNumber">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <div class="form-group">
-                                            <label for="">Nombre de la Ficha:</label>
-                                            <input type="TEXT" class="form-control" name="fichaName">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <div class="form-group">
-                                            <label for="">Estado de la Ficha:</label>
-                                            <select class="form-control" name="fichaStatus">
+                                            <label for="">Nombre del Instructor:</label>
+                                            <select class="form-control" name="instructoresName" required>
                                                 <option value="" hidden>Seleccione</option>
                                                 <?php
 
-                                                $consultFicha = "SELECT * FROM sub_items WHERE id_items = 3 ORDER BY descripcion ASC;";
-                                                $queryFicha = mysqli_query($conn, $consultFicha);
-                                                while ($row = mysqli_fetch_array($queryFicha)) {
-                                                    echo "<option value=" . $row['id'] . ">" . $row['descripcion'] . "</option>";
+                                                $consultInstructorsName = "SELECT id,CONCAT(nombre,' ',apellido) AS nombreCompleto FROM `personas`;";
+                                                $queryInstructorsName = mysqli_query($conn, $consultInstructorsName);
+                                                while ($row = mysqli_fetch_array($queryInstructorsName)) {
+                                                    echo "<option value=" . $row['id'] . ">" . $row['nombreCompleto'] . "</option>";
+                                                }
+                                                ?>  
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label for="">Nombre de la ficha a la que pertenece:</label>
+                                            <select class="form-control" name="instructoresFicha" required>
+                                                <option value="" hidden>Seleccione</option>
+                                                <?php
+
+                                                $consultFichaName = "SELECT fichas.id, CONCAT(programa.nom_programa,' ','-',' ', fichas.ficha) AS ficha  FROM fichas
+                                                JOIN programa on fichas.id_programa = programa.id;";
+                                                $queryFichaName = mysqli_query($conn, $consultFichaName);
+                                                while ($row = mysqli_fetch_array($queryFichaName)) {
+                                                    echo "<option value=" . $row['id'] . ">" . $row['ficha'] . "</option>";
                                                 }
                                                 ?>
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-lg-9">
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <div class="form-group"><br>
+                                    <div class="col-lg-4">
+                                        <div class="form-group ms-auto"><br>
                                             <input type="submit" class="btn btn-success form-control" value="Registrar"
-                                                name="registerFicha">
+                                                name="registerInstructores">
                                         </div>
                                     </div>
                                 </div>
@@ -101,43 +89,31 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Curso </th>
-                                        <th>Numero - Ficha</th>
-                                        <th>Nombre - Ficha</th>
-                                        <th>Estado</th>
+                                        <th>Estado Curso</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
                                     <tr>
                                         <th>#</th>
-                                        <th>Curso Al que pertenece la Ficha</th>
-                                        <th>Numero - Ficha</th>
-                                        <th>Nombre - Ficha</th>
-                                        <th>Estado</th>
+                                        <th>Curso </th>
+                                        <th>Estado Curso</th>
                                     </tr>
                                 </tfoot>
                                 <tbody>
                                     <?php
-                                    $searchFicha = "SELECT programa.nom_programa AS curso, ficha, alias, sub_items.descripcion AS estado FROM fichas
-                                    INNER JOIN programa ON fichas.id_programa = programa.id
-                                    INNER JOIN sub_items ON fichas.estado = sub_items.id 
-                                    WHERE sub_items.id_items = 3;";
-                                    $queryFicha = mysqli_query($conn, $searchFicha);
-
+                                    $searchCourses = "SELECT nom_programa,sub_items.descripcion AS estado FROM `programa`
+                                    INNER JOIN sub_items ON programa.estado = sub_items.id
+                                    WHERE sub_items.id_items = 3;" ;
+                                    $queryCourses = mysqli_query($conn, $searchCourses);
                                     $count = 0;
-                                    while ($row = mysqli_fetch_array($queryFicha)) {
+                                    while ($row = mysqli_fetch_array($queryCourses)) {
                                         $count++; ?>
                                         <tr>
                                             <td>
                                                 <?php echo $count; ?>
                                             </td>
                                             <td>
-                                                <?php echo $row['curso'] ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $row['ficha'] ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $row['alias'] ?>
+                                                <?php echo $row['nom_programa'] ?>
                                             </td>
                                             <td>
                                                 <?php echo $row['estado'] ?>
