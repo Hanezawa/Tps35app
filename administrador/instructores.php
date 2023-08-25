@@ -32,7 +32,7 @@
                     <div class="card">
                         <h5 class="card-header bg-success text-white">Agregar Fichas</h5>
                         <div class="card-body">
-                            <form action="./back/registerCourse.php" method="POST">
+                            <form action="./back/register_instructor.php" method="POST">
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="form-group">
