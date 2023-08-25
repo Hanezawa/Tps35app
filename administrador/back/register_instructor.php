@@ -3,8 +3,8 @@ include('../back/connection.php');
 
 if(isset($_POST['registerInstructores'])){
 
-    $instructoresName = $_POST['instructoresName'];
-    $instructoresFicha = $_POST['instructoresFicha'];
+    $instructoresName = $_POST['instructorName'];
+    $instructoresFicha = $_POST['instructorFicha'];
 
     try {
 

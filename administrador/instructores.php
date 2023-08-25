@@ -37,7 +37,7 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label for="">Nombre del Instructor:</label>
-                                            <select class="form-control" name="instructoresName" required>
+                                            <select class="form-control" name="instructorName" required>
                                                 <option value="" hidden>Seleccione</option>
                                                 <?php
 
@@ -53,7 +53,7 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label for="">Nombre de la ficha a la que pertenece:</label>
-                                            <select class="form-control" name="instructoresFicha" required>
+                                            <select class="form-control" name="instructorFicha" required>
                                                 <option value="" hidden>Seleccione</option>
                                                 <?php
 
