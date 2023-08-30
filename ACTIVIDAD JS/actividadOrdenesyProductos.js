@@ -26,4 +26,10 @@ class Producto{
     set Nombre(nombre){
         this._nombre = nombre
     }
+    get Precio(){
+        return this._precio;
+    }
+    set Precio(precio){
+        this._precio = precio;  
+    }
 }
