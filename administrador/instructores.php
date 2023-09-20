@@ -36,12 +36,16 @@
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label for="">Nombre del Instructor:</label>
-                                            <select class="form-control" name="instructoresName" required>
+                                            <label for="">Nombre completo del Instructor:</label>
+                                            <select class="form-control" name="instructorName" required>
                                                 <option value="" hidden>Seleccione</option>
                                                 <?php
 
+<<<<<<< HEAD
                                                 $consultInstructorsName = "SELECT id,CONCAT(nombre,' ',apellido) AS nombreCompleto FROM `personas` WHERE rol = 2;";
+=======
+                                                $consultInstructorsName = "SELECT id, CONCAT(nombre,' ',apellido) AS nombreCompleto FROM `personas` WHERE rol = 2;";
+>>>>>>> 94b3982f1a9ea396e2503b4767d75499fa6edeea
                                                 $queryInstructorsName = mysqli_query($conn, $consultInstructorsName);
                                                 while ($row = mysqli_fetch_array($queryInstructorsName)) {
                                                     echo "<option value=" . $row['id'] . ">" . $row['nombreCompleto'] . "</option>";
@@ -52,11 +56,10 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label for="">Nombre de la ficha a la que pertenece:</label>
-                                            <select class="form-control" name="instructoresFicha" required>
+                                            <label for="">Ficha a la que pertenece:</label>
+                                            <select class="form-control" name="instructorFicha" required>
                                                 <option value="" hidden>Seleccione</option>
                                                 <?php
-
                                                 $consultFichaName = "SELECT fichas.id, CONCAT(programa.nom_programa,' ','-',' ', fichas.ficha) AS ficha  FROM fichas
                                                 JOIN programa on fichas.id_programa = programa.id;";
                                                 $queryFichaName = mysqli_query($conn, $consultFichaName);
@@ -81,17 +84,28 @@
                     <div class="card mb-4">
                         <div class="card-header bg-success text-white">
                             <i class="fas fa-table me-1"></i>
+<<<<<<< HEAD
                             Tabla instructores
+=======
+                            Tabla Instructores
+>>>>>>> 94b3982f1a9ea396e2503b4767d75499fa6edeea
                         </div>
                         <div class="card-body">
                             <table id="datatablesSimple">
                                 <thead>
                                     <tr>
                                         <th>#</th>
+<<<<<<< HEAD
                                         <th>Nombre </th>
                                         <th>Apellido</th>
                                         <th>Ficha Asignada</th>
                                         <th># De Ficha</th>
+=======
+                                        <th>Nombre</th>
+                                        <th>Apellido</th>
+                                        <th>Curso</th>
+                                        <th>Ficha</th>
+>>>>>>> 94b3982f1a9ea396e2503b4767d75499fa6edeea
                                     </tr>
                                 </thead>
                                 <tfoot>
