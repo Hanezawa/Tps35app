@@ -30,7 +30,7 @@
                     </h1>
                     <br>
                     <div class="card">
-                        <h5 class="card-header bg-success text-white">Agregar Fichas</h5>
+                        <h5 class="card-header bg-success text-white">Agregar Curso</h5>
                         <div class="card-body">
                             <form action="./back/registerCourse.php" method="POST">
                                 <div class="row">

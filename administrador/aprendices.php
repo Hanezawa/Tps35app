@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Cursos</title>
+    <title>Aprendices</title>
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
@@ -26,24 +26,24 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4 text-center">Administrar instructores
+                    <h1 class="mt-4 text-center">Administrar Aprendices
                     </h1>
                     <br>
                     <div class="card">
-                        <h5 class="card-header bg-success text-white">Agregar Instructores</h5>
+                        <h5 class="card-header bg-success text-white">Agregar Aprendices</h5>
                         <div class="card-body">
-                            <form action="./back/register_instructor.php" method="POST">
+                            <form action="./back/register_aprendiz.php" method="POST">
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label for="">Nombre del Instructor:</label>
-                                            <select class="form-control" name="instructoresName" required>
+                                            <label for="">Nombre del Aprendiz:</label>
+                                            <select class="form-control" name="aprendizName" required>
                                                 <option value="" hidden>Seleccione</option>
                                                 <?php
 
-                                                $consultInstructorsName = "SELECT id,CONCAT(nombre,' ',apellido) AS nombreCompleto FROM `personas` WHERE rol = 2;";
-                                                $queryInstructorsName = mysqli_query($conn, $consultInstructorsName);
-                                                while ($row = mysqli_fetch_array($queryInstructorsName)) {
+                                                $consultAprendicesName = "SELECT id,CONCAT(nombre,' ',apellido) AS nombreCompleto FROM personas WHERE rol=12;";
+                                                $queryAprendicesName = mysqli_query($conn, $consultAprendicesName);
+                                                while ($row = mysqli_fetch_array($queryAprendicesName)) {
                                                     echo "<option value=" . $row['id'] . ">" . $row['nombreCompleto'] . "</option>";
                                                 }
                                                 ?>  
@@ -53,7 +53,7 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label for="">Nombre de la ficha a la que pertenece:</label>
-                                            <select class="form-control" name="instructoresFicha" required>
+                                            <select class="form-control" name="aprendizFicha" required>
                                                 <option value="" hidden>Seleccione</option>
                                                 <?php
 
@@ -66,6 +66,23 @@
                                                 ?>
                                             </select>
                                         </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label for="">Estado del Aprendiz:</label>
+                                            <select class="form-control" name="aprendizStatus" required>
+                                                <option value="" hidden>Seleccione</option>
+                                                <?php
+                                                $consultStatus = "SELECT * FROM sub_items WHERE id_items = 4 ORDER BY descripcion ASC;";
+                                                $queryStatus = mysqli_query($conn, $consultStatus);
+                                                while ($row = mysqli_fetch_array($queryStatus)) {
+                                                    echo "<option value=" . $row['id'] . ">" . $row['descripcion'] . "</option>";
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8">
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group ms-auto"><br>
@@ -90,8 +107,9 @@
                                         <th>#</th>
                                         <th>Nombre </th>
                                         <th>Apellido</th>
-                                        <th>Ficha Asignada</th>
+                                        <th>Ficha del Aprendiz</th>
                                         <th># De Ficha</th>
+                                        <th>Estado del Aprendiz</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
@@ -99,20 +117,21 @@
                                         <th>#</th>
                                         <th>Nombre </th>
                                         <th>Apellido</th>
-                                        <th>Ficha Asignada</th>
+                                        <th>Ficha del Aprendiz</th>
                                         <th># De Ficha</th>
+                                        <th>Estado del Aprendiz</th>
                                     </tr>
                                 </tfoot>
                                 <tbody>
                                     <?php
-                                    $searchInstructors = "SELECT instructor.id,personaNom.nombre,personaApell.apellido ,fichaNom.alias, fichaNum.ficha FROM instructor
-                                                          INNER JOIN personas personaNom ON instructor.id_persona = personaNom.id
-                                                          INNER JOIN personas personaApell ON instructor.id_persona = personaApell.id
-                                                          INNER JOIN fichas fichaNom ON instructor.id_ficha = fichaNom.id
-                                                          INNER JOIN fichas fichaNum ON instructor.id_ficha = fichaNum.id;" ;
-                                    $queryCourses = mysqli_query($conn, $searchInstructors);
+                                    $searchAprendiz = "SELECT aprendiz.id, personasNom.nombre, personasApe.apellido, fichas.alias,fichas.ficha,sub_items.descripcion FROM aprendiz
+                                                          INNER JOIN personas personasNom ON aprendiz.id_persona = personasNom.id
+                                                          INNER JOIN personas personasApe ON aprendiz.id_persona = personasApe.id
+                                                          INNER JOIN fichas ON aprendiz.id_ficha = fichas.id
+                                                          INNER JOIN sub_items ON aprendiz.estado = sub_items.id;" ;
+                                    $queryAprendiz = mysqli_query($conn, $searchAprendiz);
                                     $count = 0;
-                                    while ($row = mysqli_fetch_array($queryCourses)) {
+                                    while ($row = mysqli_fetch_array($queryAprendiz)) {
                                         $count++; ?>
                                         <tr>
                                             <td>
@@ -129,6 +148,9 @@
                                             </td>
                                             <td>
                                                 <?php echo $row['ficha'] ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row['descripcion'] ?>
                                             </td>
                                         </tr>
                                     <?php } ?>

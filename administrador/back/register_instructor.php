@@ -7,8 +7,7 @@ if(isset($_POST['registerInstructores'])){
     $instructoresFicha = $_POST['instructoresFicha'];
 
     try {
-
-        $insertInstructores = "INSERT INTO instructor (id_persona, id_ficha) VALUES ($instructoresFicha, $instructoresName);";
+        $insertInstructores = "INSERT INTO instructor (id_persona, id_ficha) VALUES ($instructoresName, $instructoresFicha);";
         $queryIntructores = mysqli_query($conn,$insertInstructores);
         header('location: ../instructores.php');
 

@@ -93,7 +93,7 @@
                     <div class="card mb-4">
                         <div class="card-header bg-success text-white">
                             <i class="fas fa-table me-1"></i>
-                            Tabla Programas
+                            Tabla fichas
                         </div>
                         <div class="card-body">
                             <table id="datatablesSimple">

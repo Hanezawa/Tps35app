@@ -11,11 +11,11 @@ include('modal-session.php');
 
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-success">
     <!-- Navbar Brand-->
-    <a class="navbar-brand ps-3" href="index_1.php">TPS 35</a>
+    <a class="navbar-brand ps-3" href="index_1.php">TPS 35 APP</a>
     <!-- Sidebar Toggle-->
     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
     <!-- Navbar-->
-    <div class="col-lg-10">
+    <div class="col-lg-9">
     </div>
     <ul class="navbar-nav ms-auto ms-md-0 me-lg-4">
         <li class="nav-item dropdown">
