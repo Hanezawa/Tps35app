@@ -31,7 +31,8 @@
                     <h1 class="mt-4 text-center">Administrar Usuarios</h1>
                     <br>
                     <div class="card">
-                        <h5 class="card-header bg-success text-white"><i class="fa-solid fa-user fa-sm" style="color: #fafafa;"></i>&nbsp;Agregar Usuarios</h5>
+                        <h5 class="card-header bg-success text-white"><i class="fa-solid fa-user fa-sm"
+                                style="color: #fafafa;"></i>&nbsp;Agregar Usuarios</h5>
                         <div class="card-body">
                             <form action="./back/register_users.php" method="POST">
                                 <div class="row">
@@ -130,11 +131,11 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Tipo Documento</th>
-                                        <th>Documento</th>
-                                        <th>Nombre</th>
-                                        <th>Apellido</th>
-                                        <th>Correo</th>
+                                        <th>Instructor</th>
+                                        <th>Aprendiz</th>
+                                        <th>Estado</th>
+                                        <th>Fecha</th>
+                                        <th>Descripcion</th>
                                         <th>Telefono</th>
                                         <th>Rol</th>
                                         <th>Acciones</th>
@@ -161,23 +162,45 @@
                                     WHERE rol.id_items = 1 AND tipo_doc.id_items  = 2;";
                                     $queryRegister = mysqli_query($conn, $searchUsers);
 
-                                    $count = 0; while($row = mysqli_fetch_array($queryRegister)){$count++; ?>
-                                    <tr>
-                                        <td><?php echo $count;?></td>
-                                        <td><?php echo $row['tipo_documento'] ?></td>
-                                        <td><?php echo $row['documento'] ?></td>
-                                        <td><?php echo $row['nombre'] ?></td>
-                                        <td><?php echo $row['apellido'] ?></td>
-                                        <td><?php echo $row['correo'] ?></td>
-                                        <td><?php echo $row['telefono'] ?></td>
-                                        <td><?php echo $row['rol'] ?></td>
-                                        <td>
-                                            <button class="btn btn-warning btn-sm " data-id="<?php echo $row['id']; ?>" data-bs-toggle="modal" data-bs-target="#updateUser"><i class="fa-solid fa-pen-to-square"></i></button></a>
-                                            <button class="btn btn-danger btn-sm " data-id="<?php echo $row['id']; ?>" data-bs-toggle="modal" data-bs-target="#deleteUser"><i class="fa-solid fa-trash"></i></button>
-                                        </td>
-                                    </tr>
+                                    $count = 0;
+                                    while ($row = mysqli_fetch_array($queryRegister)) {
+                                        $count++; ?>
+                                        <tr>
+                                            <td>
+                                                <?php echo $count; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row['tipo_documento'] ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row['documento'] ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row['nombre'] ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row['apellido'] ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row['correo'] ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row['telefono'] ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row['rol'] ?>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-warning btn-sm " data-id="<?php echo $row['id']; ?>"
+                                                    data-bs-toggle="modal" data-bs-target="#updateUser"><i
+                                                        class="fa-solid fa-pen-to-square"></i></button></a>
+                                                <button class="btn btn-danger btn-sm " data-id="<?php echo $row['id']; ?>"
+                                                    data-bs-toggle="modal" data-bs-target="#deleteUser"><i
+                                                        class="fa-solid fa-trash"></i></button>
+                                            </td>
+                                        </tr>
                                     <?php } ?>
-                                </tbody>    
+                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -193,12 +216,14 @@
 
     </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
     <script src="js/scripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
     <script src="assets/demo/chart-area-demo.js"></script>
     <script src="assets/demo/chart-bar-demo.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+        crossorigin="anonymous"></script>
     <script src="js/datatables-simple-demo.js"></script>
 </body>
 

@@ -29,9 +29,10 @@
                     <h1 class="mt-4 text-center">Administrar Asistencia</h1>
                     <br>
                     <div class="card">
-                        <h5 class="card-header bg-success text-white"><i class="fa-solid fa-user fa-sm" style="color: #fafafa;"></i>&nbsp;Agregar Asistencia</h5>
+                        <h5 class="card-header bg-success text-white"><i class="fa-solid fa-user fa-sm"
+                                style="color: #fafafa;"></i>&nbsp;Agregar Asistencia</h5>
                         <div class="card-body">
-                            <form action="" method="POST">
+                            <form action="./back/registerAsistencia.php" method="POST">
                                 <div class="row">
                                     <div class="col-lg-3">
                                         <div class="form-group">
@@ -39,7 +40,8 @@
                                             <select class="form-control" name="instructorAsist" required>
                                                 <option value="" hidden>Seleccione</option>
                                                 <?php
-                                                $consultInstructorsName = "SELECT id, CONCAT(nombre,' ',apellido) AS nombreCompleto FROM `personas` WHERE rol = 2;";
+                                                $consultInstructorsName = "SELECT personas.id, CONCAT(personas.nombre,' ',personas.apellido) AS nombreCompleto FROM personas
+                                                                            WHERE rol = 2";
                                                 $queryInstructorsName = mysqli_query($conn, $consultInstructorsName);
                                                 while ($row = mysqli_fetch_array($queryInstructorsName)) {
                                                     echo "<option value=" . $row['id'] . ">" . $row['nombreCompleto'] . "</option>";
@@ -55,7 +57,8 @@
                                                 <option value="" hidden>Seleccione</option>
                                                 <?php
                                                 // Reemplaza este código con una consulta que obtenga la lista de aprendices
-                                                $consultAprendices = "SELECT id, CONCAT(nombre,' ',apellido) AS nombreCompleto FROM `personas` WHERE rol = 12;";
+                                                $consultAprendices = "SELECT personas.id, CONCAT(personas.nombre,' ',personas.apellido) AS nombreCompleto FROM personas
+                                                                      WHERE rol = 12";
                                                 $queryAprendices = mysqli_query($conn, $consultAprendices);
                                                 while ($row = mysqli_fetch_array($queryAprendices)) {
                                                     echo "<option value=" . $row['id'] . ">" . $row['nombreCompleto'] . "</option>";
@@ -98,7 +101,8 @@
                                     <div class="col-lg-3">
                                         <div class="form-group">
                                             <br><br>
-                                            <input type="submit" class="btn btn-success form-control" value="Registrar Asistencia" name="registrar_asistencia">
+                                            <input type="submit" class="btn btn-success form-control"
+                                                value="Registrar Asistencia" name="registrar_asistencia">
                                         </div>
                                     </div>
                                 </div>
@@ -118,28 +122,64 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Tipo Documento</th>
-                                        <th>Documento</th>
-                                        <th>Nombre</th>
-                                        <th>Apellido</th>
-                                        <th>Correo</th>
-                                        <th>Telefono</th>
-                                        <th>Rol</th>
+                                        <th>Instructor</th>
+                                        <th>Aprendiz</th>
+                                        <th>Estado</th>
+                                        <th>Fecha</th>
+                                        <th>Descripcion</th>
+                                        <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
                                     <tr>
                                         <th>#</th>
-                                        <th>Tipo Documento</th>
-                                        <th>Documento</th>
-                                        <th>Nombre</th>
-                                        <th>Apellido</th>
-                                        <th>Correo</th>
-                                        <th>Telefono</th>
-                                        <th>Rol</th>
+                                        <th>Instructor</th>
+                                        <th>Aprendiz</th>
+                                        <th>Estado</th>
+                                        <th>Fecha</th>
+                                        <th>Descripcion</th>
+                                        <th>Acciones</th>
                                     </tr>
                                 </tfoot>
                                 <tbody>
+                                    <?php
+                                    $searchUsers = "SELECT asistencia.id, CONCAT(profesor.nombre,' ',profesor.apellido) AS profesorNom, CONCAT(estudiante.nombre,' ',estudiante.apellido) AS estudianteNom, sub_items.descripcion AS estado, asistencia.fecha, asistencia.descripcion FROM asistencia INNER JOIN personas profesor ON asistencia.id_instructor = profesor.id
+                                                    INNER JOIN personas estudiante ON asistencia.id_aprendiz = estudiante.id
+                                                    INNER JOIN sub_items ON asistencia.estado = sub_items.id;";
+                                    $queryRegister = mysqli_query($conn, $searchUsers);
+
+                                    $count = 0;
+                                    while ($row = mysqli_fetch_array($queryRegister)) {
+                                        $count++; ?>
+                                        <tr>
+                                            <td>
+                                                <?php echo $count; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row['profesorNom'] ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row['estudianteNom'] ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row['estado'] ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row['fecha'] ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row['descripcion'] ?>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-warning btn-sm " data-id="<?php echo $row['id']; ?>"
+                                                    data-bs-toggle="modal" data-bs-target="#updateUser"><i
+                                                        class="fa-solid fa-pen-to-square"></i></button></a>
+                                                <button class="btn btn-danger btn-sm " data-id="<?php echo $row['id']; ?>"
+                                                    data-bs-toggle="modal" data-bs-target="#deleteUser"><i
+                                                        class="fa-solid fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
                                 </tbody>
                             </table>
                         </div>
@@ -156,12 +196,14 @@
 
     </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
     <script src="js/scripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
     <script src="assets/demo/chart-area-demo.js"></script>
     <script src="assets/demo/chart-bar-demo.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+        crossorigin="anonymous"></script>
     <script src="js/datatables-simple-demo.js"></script>
 </body>
 
