@@ -16,6 +16,8 @@
     <?php
     include('comunes/navbar.php');
     include('./back/connection.php');
+    include('./comunes/modal-UpdateUsers.php');
+    include('./comunes/modal-DeleteUsers.php');
     ?>
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
@@ -135,6 +137,7 @@
                                         <th>Correo</th>
                                         <th>Telefono</th>
                                         <th>Rol</th>
+                                        <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
@@ -147,11 +150,12 @@
                                         <th>Correo</th>
                                         <th>Telefono</th>
                                         <th>Rol</th>
+                                        <th>Acciones</th>
                                     </tr>
                                 </tfoot>
                                 <tbody>
                                     <?php
-                                    $searchUsers = "SELECT tipo_doc.descripcion AS tipo_documento, documento, nombre, apellido,correo,telefono, rol.descripcion as rol FROM personas
+                                    $searchUsers = "SELECT personas.id, tipo_doc.descripcion AS tipo_documento, documento, nombre, apellido,correo,telefono, rol.descripcion as rol FROM personas
                                     INNER JOIN sub_items tipo_doc ON personas.tipo_documento = tipo_doc.id 
                                     INNER JOIN sub_items rol ON personas.rol = rol.id
                                     WHERE rol.id_items = 1 AND tipo_doc.id_items  = 2;";
@@ -167,9 +171,13 @@
                                         <td><?php echo $row['correo'] ?></td>
                                         <td><?php echo $row['telefono'] ?></td>
                                         <td><?php echo $row['rol'] ?></td>
+                                        <td>
+                                            <button class="btn btn-warning btn-sm " data-id="<?php echo $row['id']; ?>" data-bs-toggle="modal" data-bs-target="#updateUser"><i class="fa-solid fa-pen-to-square"></i></button></a>
+                                            <button class="btn btn-danger btn-sm " data-id="<?php echo $row['id']; ?>" data-bs-toggle="modal" data-bs-target="#deleteUser"><i class="fa-solid fa-trash"></i></button>
+                                        </td>
                                     </tr>
                                     <?php } ?>
-                                </tbody>
+                                </tbody>    
                             </table>
                         </div>
                     </div>

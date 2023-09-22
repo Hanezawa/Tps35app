@@ -14,15 +14,15 @@
             <div class="collapse" id="collapseUsers" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                 <nav class="sb-sidenav-menu-nested nav">
                     <a class="nav-link text-white" href="administrar_usuarios.php">
-                        <div class="sb-nav-link-icon text-white"><i class="fa-solid fa-circle-user"></i></div>
+                        <div class="sb-nav-link-icon text-white"></div>
                         Administrar Usuarios
                     </a>
                     <a class="nav-link text-white" href="instructores.php">
-                        <div class="sb-nav-link-icon text-white"><i class="fa-solid fa-circle-user"></i></div>
+                        <div class="sb-nav-link-icon text-white"></div>
                         Instructores
                     </a>
                     <a class="nav-link text-white" href="aprendices.php">
-                        <div class="sb-nav-link-icon text-white"><i class="fa-solid fa-circle-user"></i></div>
+                        <div class="sb-nav-link-icon text-white"></div>
                         Aprendices
                     </a>
                 </nav>
@@ -35,15 +35,19 @@
             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                 <nav class="sb-sidenav-menu-nested nav">
                     <a class="nav-link text-white" href="courses.php">
-                        <div class="sb-nav-link-icon text-white"><i class="fa-solid fa-book"></i></div>
+                        <div class="sb-nav-link-icon text-white"></div>
                         Gestionar Cursos
                     </a>
                     <a class="nav-link text-white" href="fichas.php">
-                        <div class="sb-nav-link-icon text-white"><i class="fa-solid fa-book"></i></div>
+                        <div class="sb-nav-link-icon text-white"></div>
                         Gestionar Fichas
                     </a>
                 </nav>
             </div>
+            <a class="nav-link text-white" href="asistencia.php">
+                <div class="sb-nav-link-icon text-white"><i class="fa-solid fa-clipboard-question"></i></div> 
+                Asistencia
+            </a>
         </div>
     </div>
     <div class="sb-sidenav-footer bg-success text-white">

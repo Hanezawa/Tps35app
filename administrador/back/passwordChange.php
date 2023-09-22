@@ -6,7 +6,7 @@ if(isset($_POST['actualizar'])){
    $newPassword = $_POST['nuevaPassword'];
    $verifyPassword = $_POST['verificarNuevaPassword'];
    $newPassEncrypted = password_hash($newPassword,PASSWORD_DEFAULT);
-   $consultPassword = "SELECT * FROM personas";
+   $consultPassword = "SELECT * FROM persona";
 
    $queryConsultPassword= mysqli_query($conn, $consultPassword);
 

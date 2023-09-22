@@ -41,11 +41,7 @@
                                                 <option value="" hidden>Seleccione</option>
                                                 <?php
 
-<<<<<<< HEAD
                                                 $consultInstructorsName = "SELECT id,CONCAT(nombre,' ',apellido) AS nombreCompleto FROM `personas` WHERE rol = 2;";
-=======
-                                                $consultInstructorsName = "SELECT id, CONCAT(nombre,' ',apellido) AS nombreCompleto FROM `personas` WHERE rol = 2;";
->>>>>>> 94b3982f1a9ea396e2503b4767d75499fa6edeea
                                                 $queryInstructorsName = mysqli_query($conn, $consultInstructorsName);
                                                 while ($row = mysqli_fetch_array($queryInstructorsName)) {
                                                     echo "<option value=" . $row['id'] . ">" . $row['nombreCompleto'] . "</option>";
@@ -84,28 +80,17 @@
                     <div class="card mb-4">
                         <div class="card-header bg-success text-white">
                             <i class="fas fa-table me-1"></i>
-<<<<<<< HEAD
                             Tabla instructores
-=======
-                            Tabla Instructores
->>>>>>> 94b3982f1a9ea396e2503b4767d75499fa6edeea
                         </div>
                         <div class="card-body">
                             <table id="datatablesSimple">
                                 <thead>
                                     <tr>
                                         <th>#</th>
-<<<<<<< HEAD
                                         <th>Nombre </th>
                                         <th>Apellido</th>
                                         <th>Ficha Asignada</th>
                                         <th># De Ficha</th>
-=======
-                                        <th>Nombre</th>
-                                        <th>Apellido</th>
-                                        <th>Curso</th>
-                                        <th>Ficha</th>
->>>>>>> 94b3982f1a9ea396e2503b4767d75499fa6edeea
                                     </tr>
                                 </thead>
                                 <tfoot>

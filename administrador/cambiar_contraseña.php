@@ -28,7 +28,7 @@
                     <h1 class="mt-4 text-center">Gestion Contraseña</h1>
                     <br>
                     <div class="card">
-                        <h5 class="card-header bg-black text-white text-center">Cambiar Contraseña</h5>
+                        <h5 class="card-header bg-success text-white text-center">Cambiar Contraseña</h5>
                         <div class="card-body">
                             <form action="./back/passwordChange.php" method="POST">
                                 <div class="row">
